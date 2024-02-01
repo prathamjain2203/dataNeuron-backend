@@ -22,7 +22,7 @@ class DataController {
   }
 
   // Get count for add and update requests
-  async getCount() {
+  async getCount(req,res) {
     const response = await this.DataService.getCount();
     res.status(200).json(response);
   }
