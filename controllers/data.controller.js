@@ -1,8 +1,12 @@
 const DataService = require("../services/data");
+const asyncHandler = require("../utils/async.handler");
 
 class DataController {
   constructor() {
     this.DataService = new DataService();
+    this.addData = asyncHandler(this.addData.bind(this));
+    this.updateData = asyncHandler(this.updateData.bind(this));
+    this.getCount = asyncHandler(this.getCount.bind(this));
   }
 
   // Add data to table
