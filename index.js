@@ -6,6 +6,7 @@ const errorMiddleware = require("./middlewares/error.middleware");
 const unhandledError = require("./utils/unhandledException");
 const app = express();
 const data = require("./routes/data");
+app.use(express.static('public'))
 app.use(express.json());
 app.use(cors({ origin: "*" }));
 
@@ -23,3 +24,6 @@ app.listen(process.env.PORT, async () => {
   unhandledError();
   console.log("server is running");
 });
+
+
+module.exports = app; 

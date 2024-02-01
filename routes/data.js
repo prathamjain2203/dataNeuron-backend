@@ -6,6 +6,6 @@ const router = express.Router();
 const dataController = new DataController();
 router.post("/data/add", dataController.addData);
 router.put("/data/update", dataController.updateData);
-router.post("/data/count", dataController.getCount);
+router.get("/data/count", dataController.getCount);
 
 module.exports = router;
