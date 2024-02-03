@@ -7,8 +7,12 @@ class DataController {
     this.addData = asyncHandler(this.addData.bind(this));
     this.updateData = asyncHandler(this.updateData.bind(this));
     this.getCount = asyncHandler(this.getCount.bind(this));
+    this.getAllData = asyncHandler(this.getAllData.bind(this));
   }
-
+  async getAllData(req, res) {
+    const response = await this.DataService.getAllData();
+    res.status(200).json(response);
+  }
   // Add data to table
   async addData(req, res) {
     const response = await this.DataService.addData(req.body);
@@ -22,7 +26,7 @@ class DataController {
   }
 
   // Get count for add and update requests
-  async getCount(req,res) {
+  async getCount(req, res) {
     const response = await this.DataService.getCount();
     res.status(200).json(response);
   }

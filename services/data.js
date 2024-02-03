@@ -7,7 +7,7 @@ class DataService {
   constructor() {}
 
   async addData(body) {
-    const count = await Count.findOne();
+    let count = await Count.findOne();
 
     // Incrementing the add counter by 1
     count = {
@@ -24,15 +24,22 @@ class DataService {
 
     // Adding the data in table
     const data = await Data.create(body);
-
+    +8;
     return {
       message: "Data created successfully",
       data: data,
     };
   }
 
+  async getAllData() {
+    const data = await Data.find();
+    return {
+      data,
+    };
+  }
+
   async updateData(body, query) {
-    const count = await Count.findOne();
+    let count = await Count.findOne();
 
     // Incrementing the update counter by 1
     count = {

@@ -7,5 +7,6 @@ const dataController = new DataController();
 router.post("/data/add", dataController.addData);
 router.put("/data/update", dataController.updateData);
 router.get("/data/count", dataController.getCount);
+router.get("/data/all", dataController.getAllData);
 
 module.exports = router;
