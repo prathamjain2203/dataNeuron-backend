@@ -51,7 +51,9 @@ class DataService {
     if (error) {
       throw new HttpException(400, error.details[0].message);
     }
-    data = body;
+    data.email = body.email;
+    data.age = body.age;
+    data.name = body.name;
 
     await data.save();
     return {
