@@ -7,17 +7,13 @@ class DataService {
   constructor() {}
 
   async addData(body) {
-    let count = await Count.findOne();
-
+    let count = await Count.findOne().exec();
     // Incrementing the add counter by 1
-    count = {
-      ...count,
-      addCount: count + 1,
-    };
+    count.addCount = count.addCount + 1;
     await count.save();
 
     // validating the req body and throwing the error if fails
-    const error = validateData(body);
+    const { error } = validateData(body);
     if (error) {
       throw new HttpException(400, error.details[0].message);
     }
@@ -42,10 +38,8 @@ class DataService {
     let count = await Count.findOne();
 
     // Incrementing the update counter by 1
-    count = {
-      ...count,
-      updateCount: count + 1,
-    };
+    count.updateCount = count.updateCount + 1;
+
     await count.save();
     const { id } = query;
     let data = await Data.findOne({ _id: id });
@@ -53,7 +47,7 @@ class DataService {
       throw new HttpException(400, "Wrong ID");
     }
 
-    const error = validateData(body);
+    const { error } = validateData(body);
     if (error) {
       throw new HttpException(400, error.details[0].message);
     }

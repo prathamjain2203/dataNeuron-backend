@@ -1,6 +1,5 @@
 const Joi = require("joi");
 
-
 // Added validator for data body request
 const validateData = (object) => {
   const schema = Joi.object({
@@ -8,7 +7,6 @@ const validateData = (object) => {
     name: Joi.string().required(),
     age: Joi.number().required(),
   });
-
   return schema.validate(object);
 };
 
